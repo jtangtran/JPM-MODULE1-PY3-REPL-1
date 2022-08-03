@@ -1,0 +1,142 @@
+From d8436d51869202a20dcf5e0de4332fa46dbdb385 Mon Sep 17 00:00:00 2001
+From: Phuong Tang-Tran <>
+Date: Wed, 3 Aug 2022 21:46:56 +0000
+Subject: [PATCH] Initial commit
+
+---
+ Instructions     |  5 +++++
+ jpm_module_1     |  1 +
+ main.py          | 34 ++++++++++++++++++++++++++++++++++
+ new_client3.py   | 10 ++++++++++
+ poetry.lock      |  8 ++++++++
+ pyproject.toml   | 13 +++++++++++++
+ requirements.txt |  1 +
+ 7 files changed, 72 insertions(+)
+ create mode 100644 Instructions
+ create mode 160000 jpm_module_1
+ create mode 100644 main.py
+ create mode 100644 new_client3.py
+ create mode 100644 poetry.lock
+ create mode 100644 pyproject.toml
+ create mode 100644 requirements.txt
+
+diff --git a/Instructions b/Instructions
+new file mode 100644
+index 0000000..21d0bdd
+--- /dev/null
++++ b/Instructions
+@@ -0,0 +1,5 @@
++NOTE: IF YOU HAVEN'T CLICKED THE 'FORK' BUTTON ABOVE DO IT NOW!
++
++Open a new tab in your browser and copy paste the link below onto your browser's url to see the instructions slides for using this REPL:
++
++https://insidesherpa.s3.amazonaws.com/vinternships/companyassets/Sj7temL583QAYpHXD/repl_mod1_v4.pdf
+\ No newline at end of file
+diff --git a/jpm_module_1 b/jpm_module_1
+new file mode 160000
+index 0000000..7f2f7fe
+--- /dev/null
++++ b/jpm_module_1
+@@ -0,0 +1 @@
++Subproject commit 7f2f7fef9771d431e61b0d89c0105d3e5297efc3
+diff --git a/main.py b/main.py
+new file mode 100644
+index 0000000..20ac3f2
+--- /dev/null
++++ b/main.py
+@@ -0,0 +1,34 @@
++# BEFORE YOU DO ANYTHING, PLEASE DO FF
++# CLICK THE 'FORK' BUTTON ABOVE
++
++# READ`Instructions` file. You can access it by clicking on the 'Files' icon on the left side/column of the screen (i.e. the top most icon, above Packages and Settings) and then clicking on the 'Instructions' file to show the contents
++
++# This is the main.py script. It's the only script that you can run on this REPL platform via the run button above. This script takes care of displaying the output of stock price feed script you need to change in the `jpm_module_1` folder. 
++
++# YOU SHOULD NOT CHANGE ANYTHING HERE AS IT ONLY RUNS THE STOCK PRICE FEED SCRIPT AND SHOWS THE OUTPUT
++
++# IF YOU WISH TO DO THE BONUS TASK DESCRIBED IN THE INSRUCTIONS FILE, UNCOMMENT THE CODE BELOW
++
++import os
++import subprocess
++import time
++import signal
++
++os.chdir(os.getcwd()+'/jpm_module_1')
++
++process = subprocess.Popen(['python', 'server3.py'], cwd=os.getcwd(), preexec_fn=os.setsid)
++
++time.sleep(.300)
++
++process2 = subprocess.Popen(['python', 'client3.py'], cwd=os.getcwd(), preexec_fn=os.setsid)
++process2.wait()
++os.killpg(os.getpgid(process.pid), signal.SIGTERM)
++
++# FOR BONUS TASK 
++# IF YOU WANT TO DO IT THEN UNCOMMENT THE CODE BELOW
++# Comments are anything that's preceded with '#'
++# TO UNCOMMENT JUST REMOVE THE '#'
++
++#print("UNIT TEST RESULTS BELOW...")
++#process2 = subprocess.Popen(['python', #'client_test.py'], cwd=os.getcwd(), #preexec_fn=os.setsid)
++#process2.wait()
+\ No newline at end of file
+diff --git a/new_client3.py b/new_client3.py
+new file mode 100644
+index 0000000..65c2e93
+--- /dev/null
++++ b/new_client3.py
+@@ -0,0 +1,10 @@
++#This is where you would manually type the existing code in the client3.py, which is inside the jpm_module_1 folder (disregard copying the useless comments) so that you can avoid the dreaded tab editing issues in REPL particularly for the Python environment only
++
++#After manually copying the useful code in client3.py, you can make your changes here
++
++#Before you test your modified code is working, make sure you have done the initial steps needed to be done before making changes in the instruction slides
++
++#Then, to test, first, delete the client3.py file inside jpm_module_1. Then rename this file to just client3.py. Finally move this file inside the jpm_module_1 folder  
++
++# Delete these comments when you're done...
++# Comments are anything that's preceded with '#'
+\ No newline at end of file
+diff --git a/poetry.lock b/poetry.lock
+new file mode 100644
+index 0000000..f41588b
+--- /dev/null
++++ b/poetry.lock
+@@ -0,0 +1,8 @@
++package = []
++
++[metadata]
++lock-version = "1.1"
++python-versions = "^3.8"
++content-hash = "fafb334cb038533f851c23d0b63254223abf72ce4f02987e7064b0c95566699a"
++
++[metadata.files]
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..de8c6ad
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,13 @@
++[build-system]
++build-backend = "poetry.masonry.api"
++requires = ["poetry>=0.12"]
++
++[tool]
++[tool.poetry]
++authors = ["Your Name <you@example.com>"]
++description = ""
++name = "runner"
++version = "0.1.0"
++[tool.poetry.dependencies]
++python = "^3.8"
++[tool.poetry.dev-dependencies]
+diff --git a/requirements.txt b/requirements.txt
+new file mode 100644
+index 0000000..b051c6c
+--- /dev/null
++++ b/requirements.txt
+@@ -0,0 +1 @@
++client
+-- 
+2.17.1
+
